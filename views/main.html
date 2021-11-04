@@ -1,0 +1,82 @@
+<div class="jumbotron">
+  <h1>Willkommen</h1>
+
+  <p class="lead">
+    beim Generator für Tischtennis Punktspieltermine
+  </p>
+
+</div>
+
+<div class="row marketing" ng-controller="MainCtrl">
+  <div ng-controller="ListCtrl" id="listIdCtrl">
+    <ul class="nav nav-tabs" role="tablist">
+      <li id="tab1" role="presentation" class="active"><a href="#tutorial" role="tab" data-toggle="tab">Tutorial</a>
+      </li>
+      <li id="tab2" role="presentation"><a href="#csv" role="tab" data-toggle="tab">Generator</a></li>
+    </ul>
+
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane fade in active" id="tutorial">
+        <div class="panel panel-success" style="margin-top: 20px">
+          <div class="panel-heading">
+            <h3 class="panel-title">Vorraussetzung</h3>
+          </div>
+          <div class="panel-body">
+            Um diesen Generator nutzen zu können, benötigst du die Vereinsspielplan.csv-Datei aus click-TT. Wenn du
+            Vereinsrechte in click-TT erhalten hast, kannst du die Datei, wie im anschließenden Video gezeigt,
+            herunterladen. Ansonsten frage einfach deinen Mannschaftsführer oder Vereinsvorstand.
+          </div>
+
+        </div>
+
+        <div class="embed-responsive embed-responsive-4by3">
+          <iframe width="420" height="315" src="//www.youtube.com/embed/kv5vt14sDDo" frameborder="0"
+                  allowfullscreen></iframe>
+        </div>
+
+
+      </div>
+      <div role="tabpanel" class="tab-pane fade" id="csv">
+        <div style="padding-top: 20px">
+          <h4 style="display: inline;">Bitte wähle deine Vereinsspielplan.csv Datei aus.</h4>
+
+          <div style="display: inline;">
+            <div style="text-align: right"><span class="btn btn-success btn-lg btn-file">
+            Browse  <span class="glyphicon glyphicon-cloud-upload">
+      </span><input type="file" id="fileSelect" class="myListenerClass"></span></div>
+          </div>
+
+        </div>
+
+
+        <div ng-show="dateiAusgewaehlt">
+          <div class="ygrid-wrapper-div" style="overflow-y: scroll; height: 200px;">
+            <ul class="list-group">
+              <li class="list-group-item" ng-repeat='mannschaft in mannschaftsOberflaechenArray'>
+                <label class="checkbox-inline" ng-click="addOrDeleteFromExportList(mannschaft, $event)">
+                  <input type="checkbox">{{mannschaft.liga}}: {{mannschaft.vereinsName}}
+                </label>
+              </li>
+            </ul>
+          </div>
+          <br>
+
+          <div class="input-group" style="width: 50%">
+            <input type="text" class="form-control" placeholder="MeinePunktspiele" ng-model="icsName">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button" ng-click="exportiereDatei(icsName)">Generieren <span
+          class="glyphicon glyphicon-ok"></span></button>
+      </span>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+    <br>
+
+  </div>
+</div>
+
+
+
